@@ -95,7 +95,7 @@ $(document).ready(function () {
         displayCities(cityList);
         if (city != '') {
             $.ajax({
-                url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=imperial" + "&APPID=73192c342d8281ba63628333be8a6075",
+                url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=imperial" + "&APPID=73192c342d8281ba63628333be8a6075",
                 type: "GET",
                 success: function (data) {
                     console.log("WEATHER", data);
@@ -107,7 +107,7 @@ $(document).ready(function () {
 
 
             $.ajax({
-                url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + "&units=imperial" + "&APPID=73192c342d8281ba63628333be8a6075",
+                url: 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + "&units=imperial" + "&APPID=73192c342d8281ba63628333be8a6075",
                 type: "GET",
                 success: function (data) {
                     showForecast(data);
@@ -117,13 +117,12 @@ $(document).ready(function () {
             //  Couldn't get this one to work kept telling me unauthorized, Created different API  key as well.
 
             $.ajax({
-                url:'https://api.openweathermap.org/data/2.5/uvi?appid=' + "&APPID=27b53b501bc452b1f0dc8302c5961c43" + "&lat=" + lat + "&lon=" + lon,
+                url:`https://api.openweathermap.org/data/2.5/uvi?appid=73192c342d8281ba63628333be8a6075&lat=${lat}&lon=${lon}`,
                 type: "GET",
                 sucess: function (uvDisplay) {
-                   console.log("uvDisplay",uvDisplay);
-                   showUV(data.coord.lat, data.coord.lon);
-                   console.log("COORD",data.coord.lat, data.coord.lon);
-               
+                   console.log("uvDisplay", uvDisplay);
+                //    showUV(data.coord.lat, data.coord.lon);
+                //    console.log("COORD",data.coord.lat, data.coord.lon);
                  }
             });
 
@@ -138,11 +137,3 @@ $(document).ready(function () {
 
 
 
-// $.ajax({
-//     url: 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + "&units=imperial" + "&APPID=73192c342d8281ba63628333be8a6075",
-//     type: "GET",
-//     success: function (data) {
-//         showForecast(data);
-//         // add to page
-//     }
-// });
